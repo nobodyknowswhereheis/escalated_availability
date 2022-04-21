@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sp_ng_template">
+    <sp_ng_template action="INSERT_OR_UPDATE">
+        <id>add_assignee</id>
+        <sp_widget display_value="Escalated Availability">957b82ac87cf01107501fc86dabb3568</sp_widget>
+        <sys_class_name>sp_ng_template</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2022-04-21 05:28:40</sys_created_on>
+        <sys_id>6e1e67ac87c341107501fc86dabb3587</sys_id>
+        <sys_mod_count>10</sys_mod_count>
+        <sys_name>add_assignee</sys_name>
+        <sys_package display_value="Availability Dashboard" source="x_snc_avail_dash">6d7a3c98874301101321b918dabb35fb</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Availability Dashboard">6d7a3c98874301101321b918dabb35fb</sys_scope>
+        <sys_update_name>sp_ng_template_6e1e67ac87c341107501fc86dabb3587</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2022-04-21 05:37:42</sys_updated_on>
+        <template><![CDATA[<div>
+  <div class="modal-header">
+    <h4 class="modal-title">
+      ${Add Assignee}
+    </h4>
+  </div>
+
+  <div class="modal-body">
+
+    <div class = "form-group">
+      <label class = "field-label" for = "name">Name</label>
+      <input class = "form-control" id = "name" ng-model = "assignee_request.user_name"/>
+    </div>
+
+    <div class = "form-group">
+      <label class = "field-label" for = "region">Region</label>
+      <select class = "form-control" id = "region" ng-model = "assignee_request.region">
+        <option value = ''>-- None --</option>
+        <option ng-repeat = "region in data.region_array" value = "{{region}}">{{region}}</option>
+      </select>
+    </div>
+
+    <div class = "form-group">
+      <label class = "field-label" for = "email">Email</label>
+      <input class = "form-control" id = "email" ng-model = "assignee_request.email"/>
+    </div>
+
+    <div class = "form-group">
+      <label class = "field-label" for = "name">Phone (please use E.164 format. Ex: +12345678910)</label>
+      <input class = "form-control" id = "name" ng-model = "assignee_request.phone"/>
+    </div>
+
+
+    <div class = "form-group">
+      <label class = "field-label" for = "skills">Skills</label>
+      <textarea class = "form-control" id = "skills" ng-model = "assignee_request.skills">
+      </textarea>
+    </div>
+  </div>
+
+  <div class = "modal-footer">
+    <button class = "btn btn-primary" ng-click = "submitRequest(assignee_request)" ng-disabled = "!assignee_request.user_name || !assignee_request.region || !assignee_request.email || !assignee_request.phone || !assignee_request.skills">
+      ${Submit}
+    </button>
+  </div>
+</div>]]></template>
+    </sp_ng_template>
+</record_update>

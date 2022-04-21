@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update>
+    <sys_ui_section caption="" section_id="51070ee887cf01107501fc86dabb357d" sys_domain="global" table="x_snc_avail_dash_assignee_request" version="3" view="">
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>assignee</element>
+            <position>0</position>
+            <sys_created_by>edward.sun@snc</sys_created_by>
+            <sys_created_on>2022-04-20 21:58:49</sys_created_on>
+            <sys_id>f8274ee887cf01107501fc86dabb35de</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="NULL" display_value="" name="x_snc_avail_dash_assignee_request" sys_domain="global" view="Default view">51070ee887cf01107501fc86dabb357d</sys_ui_section>
+            <sys_updated_by>edward.sun@snc</sys_updated_by>
+            <sys_updated_on>2022-04-20 21:58:49</sys_updated_on>
+            <sys_user/>
+            <type/>
+        </sys_ui_element>
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>start_time</element>
+            <position>1</position>
+            <sys_created_by>edward.sun@snc</sys_created_by>
+            <sys_created_on>2022-04-20 21:58:49</sys_created_on>
+            <sys_id>7c274ee887cf01107501fc86dabb35de</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="NULL" display_value="" name="x_snc_avail_dash_assignee_request" sys_domain="global" view="Default view">51070ee887cf01107501fc86dabb357d</sys_ui_section>
+            <sys_updated_by>edward.sun@snc</sys_updated_by>
+            <sys_updated_on>2022-04-20 21:58:49</sys_updated_on>
+            <sys_user/>
+            <type/>
+        </sys_ui_element>
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>.split</element>
+            <position>2</position>
+            <sys_created_by>edward.sun@snc</sys_created_by>
+            <sys_created_on>2022-04-20 21:58:49</sys_created_on>
+            <sys_id>fc274ee887cf01107501fc86dabb35de</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="NULL" display_value="" name="x_snc_avail_dash_assignee_request" sys_domain="global" view="Default view">51070ee887cf01107501fc86dabb357d</sys_ui_section>
+            <sys_updated_by>edward.sun@snc</sys_updated_by>
+            <sys_updated_on>2022-04-20 21:58:49</sys_updated_on>
+            <sys_user/>
+            <type>.split</type>
+        </sys_ui_element>
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>type</element>
+            <position>3</position>
+            <sys_created_by>edward.sun@snc</sys_created_by>
+            <sys_created_on>2022-04-20 21:58:49</sys_created_on>
+            <sys_id>70274ee887cf01107501fc86dabb35df</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="NULL" display_value="" name="x_snc_avail_dash_assignee_request" sys_domain="global" view="Default view">51070ee887cf01107501fc86dabb357d</sys_ui_section>
+            <sys_updated_by>edward.sun@snc</sys_updated_by>
+            <sys_updated_on>2022-04-20 21:58:49</sys_updated_on>
+            <sys_user/>
+            <type/>
+        </sys_ui_element>
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>end_time</element>
+            <position>4</position>
+            <sys_created_by>edward.sun@snc</sys_created_by>
+            <sys_created_on>2022-04-20 21:58:49</sys_created_on>
+            <sys_id>f0274ee887cf01107501fc86dabb35df</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="NULL" display_value="" name="x_snc_avail_dash_assignee_request" sys_domain="global" view="Default view">51070ee887cf01107501fc86dabb357d</sys_ui_section>
+            <sys_updated_by>edward.sun@snc</sys_updated_by>
+            <sys_updated_on>2022-04-20 21:58:49</sys_updated_on>
+            <sys_user/>
+            <type/>
+        </sys_ui_element>
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>.end_split</element>
+            <position>5</position>
+            <sys_created_by>edward.sun@snc</sys_created_by>
+            <sys_created_on>2022-04-20 21:58:49</sys_created_on>
+            <sys_id>74274ee887cf01107501fc86dabb35df</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="NULL" display_value="" name="x_snc_avail_dash_assignee_request" sys_domain="global" view="Default view">51070ee887cf01107501fc86dabb357d</sys_ui_section>
+            <sys_updated_by>edward.sun@snc</sys_updated_by>
+            <sys_updated_on>2022-04-20 21:58:49</sys_updated_on>
+            <sys_user/>
+            <type>.end_split</type>
+        </sys_ui_element>
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>notes</element>
+            <position>6</position>
+            <sys_created_by>edward.sun@snc</sys_created_by>
+            <sys_created_on>2022-04-20 21:58:49</sys_created_on>
+            <sys_id>f4274ee887cf01107501fc86dabb35df</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="NULL" display_value="" name="x_snc_avail_dash_assignee_request" sys_domain="global" view="Default view">51070ee887cf01107501fc86dabb357d</sys_ui_section>
+            <sys_updated_by>edward.sun@snc</sys_updated_by>
+            <sys_updated_on>2022-04-20 21:58:49</sys_updated_on>
+            <sys_user/>
+            <type/>
+        </sys_ui_element>
+        <sys_ui_section action="INSERT_OR_UPDATE">
+            <caption/>
+            <header>false</header>
+            <name>x_snc_avail_dash_assignee_request</name>
+            <roles/>
+            <sys_class_name>sys_ui_section</sys_class_name>
+            <sys_created_by>edward.sun@snc</sys_created_by>
+            <sys_created_on>2022-04-20 21:58:18</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_id>51070ee887cf01107501fc86dabb357d</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_name>x_snc_avail_dash_assignee_request</sys_name>
+            <sys_overrides/>
+            <sys_package display_value="Availability Dashboard" source="x_snc_avail_dash">6d7a3c98874301101321b918dabb35fb</sys_package>
+            <sys_policy/>
+            <sys_scope display_value="Availability Dashboard">6d7a3c98874301101321b918dabb35fb</sys_scope>
+            <sys_update_name>sys_ui_section_51070ee887cf01107501fc86dabb357d</sys_update_name>
+            <sys_updated_by>edward.sun@snc</sys_updated_by>
+            <sys_updated_on>2022-04-20 21:58:18</sys_updated_on>
+            <sys_user/>
+            <title>true</title>
+            <view display_value="Default view" name="NULL">Default view</view>
+            <view_name/>
+        </sys_ui_section>
+    </sys_ui_section>
+</record_update>

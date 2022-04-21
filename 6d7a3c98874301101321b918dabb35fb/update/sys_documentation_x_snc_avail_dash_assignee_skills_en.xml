@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update>
+    <sys_documentation element="skills" label="Skills" language="en" table="x_snc_avail_dash_assignee">
+        <sys_documentation action="INSERT_OR_UPDATE">
+            <element>skills</element>
+            <help/>
+            <hint/>
+            <label>Skills</label>
+            <language>en</language>
+            <name>x_snc_avail_dash_assignee</name>
+            <plural>Skills</plural>
+            <sys_class_name>sys_documentation</sys_class_name>
+            <sys_created_by>edward.sun@snc</sys_created_by>
+            <sys_created_on>2022-04-20 20:33:52</sys_created_on>
+            <sys_id>d4b37dec878f01107501fc86dabb3520</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_name>Skills</sys_name>
+            <sys_package display_value="Availability Dashboard" source="x_snc_avail_dash">6d7a3c98874301101321b918dabb35fb</sys_package>
+            <sys_policy/>
+            <sys_scope display_value="Availability Dashboard">6d7a3c98874301101321b918dabb35fb</sys_scope>
+            <sys_update_name>sys_documentation_x_snc_avail_dash_assignee_skills_en</sys_update_name>
+            <sys_updated_by>edward.sun@snc</sys_updated_by>
+            <sys_updated_on>2022-04-20 20:33:52</sys_updated_on>
+            <url/>
+            <url_target/>
+        </sys_documentation>
+    </sys_documentation>
+</record_update>

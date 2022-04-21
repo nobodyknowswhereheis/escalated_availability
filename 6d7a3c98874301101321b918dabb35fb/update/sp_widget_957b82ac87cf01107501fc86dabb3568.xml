@@ -1,0 +1,379 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sp_widget">
+    <sp_widget action="INSERT_OR_UPDATE">
+        <category>custom</category>
+        <client_script><![CDATA[api.controller=function($scope, $uibModal, spUtil) {
+	/* widget controller */
+	var c = this;
+
+	spUtil.recordWatch($scope, "x_snc_avail_dash_assignee", "in_rotation=true", function(){	
+		c.server.update()
+	});
+
+	$scope.region = $scope.data.region_pref;
+
+	$scope.$watch('region', function(){
+
+		$scope.data.region = $scope.region;
+		c.server.update();
+
+	});
+
+	$scope.openModal = function(modalTemplate, index){
+
+		if(modalTemplate == 'assign_case'){
+
+			$scope.new_case_request = {};
+			$scope.new_case_request.name = 'assign_case';
+			$scope.new_case_request.case_number = '';
+			$scope.new_case_request.assigned_on = '';
+			$scope.new_case_request.sys_id = $scope.data.assignees[index].sys_id;
+
+		}
+
+		if(modalTemplate == 'out_of_rotation'){
+
+			$scope.out_of_rotation_request = {};
+			$scope.out_of_rotation_request.name = 'out_of_rotation';
+			$scope.out_of_rotation_request.type = '';
+			$scope.out_of_rotation_request.start_time = '';
+			$scope.out_of_rotation_request.end_time = '';
+			$scope.out_of_rotation_request.notes = '';
+			$scope.out_of_rotation_request.sys_id = $scope.data.assignees[index].sys_id;
+
+		}
+
+		if(modalTemplate == 'non_response'){
+
+			$scope.non_response_request = {};
+			$scope.non_response_request.name = 'non_response';
+			$scope.non_response_request.notes = '';
+			$scope.non_response_request.reported_on = '';
+			$scope.non_response_request.sys_id = $scope.data.assignees[index].sys_id;
+
+		}
+
+		if(modalTemplate == 'add_assignee'){
+
+			$scope.assignee_request = {};
+			$scope.assignee_request.name = 'assignee_request';
+			$scope.assignee_request.user_name = '';
+			$scope.assignee_request.region = '';
+			$scope.assignee_request.email = '';
+			$scope.assignee_request.phone = '';
+			$scope.assignee_request.skills = '';
+			
+		}
+
+		c.modalInstance = $uibModal.open({
+			templateUrl: modalTemplate,
+			scope: $scope
+		});
+	}
+
+	$scope.submitRequest = function(request){
+		
+		console.log(request);
+
+		$scope.data.request = request;
+		c.server.update().then(function(){
+
+			$scope.data.request = {};
+			c.modalInstance.close();
+
+		});
+	}
+};]]></client_script>
+        <controller_as>c</controller_as>
+        <css/>
+        <data_table>sp_instance</data_table>
+        <demo_data/>
+        <description/>
+        <docs/>
+        <field_list/>
+        <has_preview>true</has_preview>
+        <id>escalated_availability</id>
+        <internal>false</internal>
+        <link><![CDATA[function link(scope, element, attrs, controller) {  }]]></link>
+        <name>Escalated Availability</name>
+        <option_schema>[{"name":"title","section":"other","default_value":"Escalated Availability Dashboard","label":"Title","type":"string"}]</option_schema>
+        <public>true</public>
+        <roles/>
+        <script><![CDATA[(function() {
+	/* populate the 'data' object */
+	/* e.g., data.table = $sp.getValue('table'); */
+
+	data.title = options.title;
+
+	data.region_array = [];
+
+	data.user = gs.getUser();
+
+	var regions = new GlideRecord('sys_choice');
+	regions.addEncodedQuery('name=x_snc_avail_dash_assignee^element=region');
+	regions.query();
+
+	while(regions.next()){
+
+		data.region_array.push(regions.label.getDisplayValue());
+
+	}
+
+	data.region_pref = data.user.getPreference('availability_dashboard_region');
+
+	data.assignee_request_array = [];
+
+	var request_types = new GlideRecord('sys_choice');
+	request_types.addEncodedQuery('name=x_snc_avail_dash_assignee_request^element=type');
+	request_types.query();
+
+	while(request_types.next()){
+
+		data.assignee_request_array.push(request_types.label.getDisplayValue());
+
+	}
+
+	data.assignees = [];
+
+	if(input){
+
+		if(input.region){
+
+			data.user.savePreference('availability_dashboard_region', input.region);
+
+			var regional_assignee = new GlideRecord('x_snc_avail_dash_assignee');
+			regional_assignee.addEncodedQuery('in_rotation=true^region=' + input.region);
+			regional_assignee.orderByDesc('last_assigned');
+			regional_assignee.query();
+
+			while(regional_assignee.next()){
+
+				var assignee = {};
+
+				for(var column in regional_assignee){
+
+					if(column != 'sys_meta')
+						assignee[column] = regional_assignee[column].getDisplayValue();
+
+				}
+
+				var assignee_requests = new GlideRecord('x_snc_avail_dash_assignee_request');
+				assignee_requests.addEncodedQuery("assignee=" + assignee.sys_id + "^start_timeRELATIVELT@minute@ago@0^end_timeRELATIVEGT@minute@ago@0");
+				assignee_requests.orderByDesc('end_time');
+				assignee_requests.query();
+
+				if(assignee_requests.next()){
+
+					assignee.status = assignee_requests.type.getDisplayValue();
+					assignee.status_notes = assignee_requests.sys_created_by + ': ' + assignee_requests.notes;
+					assignee.start_time = assignee_requests.start_time.getDisplayValue();
+					assignee.end_time = assignee_requests.end_time.getDisplayValue();
+
+				}
+
+				else
+					assignee.status = 'Available';
+
+				assignee.previously_assigned = [];
+
+				var assigned_cases = new GlideRecord('x_snc_avail_dash_assigned_case');
+				assigned_cases.addEncodedQuery('assignee=' + assignee.sys_id + '^assigned_onONThis quarter@javascript:gs.beginningOfThisQuarter()@javascript:gs.endOfThisQuarter()');
+				assigned_cases.orderByDesc('assigned_on');
+				assigned_cases.query();
+
+				while(assigned_cases.next()){
+
+					var assigned_case = {};
+					assigned_case.number = assigned_cases.number.getDisplayValue();
+					assigned_case.assigned_on = assigned_cases.assigned_on.getDisplayValue();
+
+					assignee.previously_assigned.push(assigned_case);
+
+				}
+
+				assignee.non_responses = [];
+
+				var non_responses = new GlideRecord('x_snc_avail_dash_assignee_non_response');
+				non_responses.addEncodedQuery('assignee=' + assignee.sys_id + '^reported_onONThis quarter@javascript:gs.beginningOfThisQuarter()@javascript:gs.endOfThisQuarter()');
+				non_responses.orderByDesc('reported_on');
+				non_responses.query();
+
+				while(non_responses.next()){
+
+					var non_response = {};
+					non_response.reported_on = non_responses.reported_on.getDisplayValue();
+					non_response.notes = non_responses.notes.getDisplayValue();
+
+					assignee.non_responses.push(non_response);
+
+				}
+
+				if(assignee.status == 'Available')
+					data.assignees.unshift(assignee);
+
+				else
+					data.assignees.push(assignee);
+
+			}
+		}
+
+		if(input.request){
+
+			if(input.request.name == 'assign_case'){
+
+				var assign_case = new GlideRecord('x_snc_avail_dash_assigned_case');
+				assign_case.initialize();
+				assign_case.number = input.request.case_number;
+				assign_case.assignee = input.request.sys_id;
+				assign_case.assigned_on.setDisplayValue(input.request.assigned_on);
+				assign_case.insert();
+
+			}
+
+			if(input.request.name == 'out_of_rotation'){
+
+				var assignee_request = new GlideRecord('x_snc_avail_dash_assignee_request');
+				assignee_request.initialize();
+				assignee_request.assignee = input.request.sys_id;
+				assignee_request.type = input.request.type;
+				assignee_request.start_time.setDisplayValue(input.request.start_time);
+				assignee_request.end_time.setDisplayValue(input.request.end_time);
+				assignee_request.notes = input.request.notes;
+				assignee_request.insert();
+
+			}
+
+			if(input.request.name == 'non_response'){
+
+				var non_response_request = new GlideRecord('x_snc_avail_dash_assignee_non_response');
+				non_response_request.initialize();
+				non_response_request.notes = input.request.notes;
+				non_response_request.assignee = input.request.sys_id;
+				non_response_request.reported_on = input.request.reported_on;
+				non_response_request.insert();
+
+			}
+
+			if(input.request.name == 'assignee_request'){
+				
+				var new_assignee = new GlideRecord('x_snc_avail_dash_assignee');
+				new_assignee.initialize();
+				new_assignee.name = input.request.user_name;
+				new_assignee.region = input.request.region;
+				new_assignee.email = input.request.email;
+				new_assignee.phone = input.request.phone;
+				new_assignee.skills = input.request.skills;
+				console.log(new_assignee.insert());
+
+			}
+		}
+	}
+})();]]></script>
+        <servicenow>false</servicenow>
+        <sys_class_name>sp_widget</sys_class_name>
+        <sys_created_by>edward.sun@snc</sys_created_by>
+        <sys_created_on>2022-04-20 22:17:41</sys_created_on>
+        <sys_id>957b82ac87cf01107501fc86dabb3568</sys_id>
+        <sys_mod_count>157</sys_mod_count>
+        <sys_name>Escalated Availability</sys_name>
+        <sys_package display_value="Availability Dashboard" source="x_snc_avail_dash">6d7a3c98874301101321b918dabb35fb</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Availability Dashboard">6d7a3c98874301101321b918dabb35fb</sys_scope>
+        <sys_update_name>sp_widget_957b82ac87cf01107501fc86dabb3568</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2022-04-21 05:41:37</sys_updated_on>
+        <template><![CDATA[<div class = "text-center">
+  <h2 class = "text text-primary">
+    {{data.title}}
+  </h2>
+</div>
+
+<div>
+  <select class = "form-control" ng-model = "region">
+    <option value = ''>-- None --</option>
+    <option ng-repeat = "region in data.region_array" value = "{{region}}">{{region}}</option>
+  </select>
+</div>
+
+<br/>
+
+<div>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>${Name}</th>
+        <th>${Last Asssigned}</th>
+        <th>${Skills}</th>
+        <th>${Status}</th>
+        <th>${Details}</th>
+        <th>${Actions}</th>
+      </tr>
+    </thead>
+
+    <tr ng-repeat = "assignee in data.assignees track by $index">
+      <td>
+        <p>
+          {{assignee.name}} (<a href = "tel:{{assignee.phone}}">{{assignee.phone}}</a>)
+        </p>
+        <p>
+          <a href = "https://teams.microsoft.com/l/chat/0/0?users={{assignee.email}}" target = "_blank" class = "fa fa-comment fa-2x text text-primary"></a>
+        </p>
+      </td>
+      <td>{{assignee.last_assigned}}</td>
+      <td><pre>{{assignee.skills}}</pre></td>
+      <td>
+        <p>
+          <span class = "text-{{assignee.status == 'Available' ? 'success' : 'danger'}}">{{assignee.status}}</span>
+        </p>
+        <p ng-if = "assignee.status_notes">
+          <small><i>{{assignee.status_notes}}</i></small><br/>
+          <small><i>Start: {{assignee.start_time}}</i></small><br/>
+          <small><i>End: {{assignee.end_time}}</i></small>
+        </p>
+      </td>
+      <td>
+        <div ng-if = "assignee.previously_assigned.length > 0" ng-init = "hide = true">
+          <b>
+            ${{{assignee.previously_assigned.length}} Previously assigned: } <a href ng-click = "hide = !hide">[{{hide ? "Show" : "Hide"}}]</a>
+          </b>
+          <p ng-repeat = "assigned in assignee.previously_assigned" ng-show = "!hide">
+            <small><b>${{{assigned.number}} - </b> Assigned <i>{{assigned.assigned_on}}</i>}</small>
+          </p>
+        </div>
+
+        <div ng-if = "assignee.non_responses.length > 0" ng-init = "hide = true">
+          <b class = "text-danger">
+            ${{{assignee.non_responses.length}} Non response{{assignee.non_responses.length > 1 ? 's' : ''}}:} <a href ng-click = "hide = !hide">[{{hide ? "Show" : "Hide"}}]</a>
+          </b>
+          <p ng-repeat = "nonresponse in assignee.non_responses" ng-show = "!hide">
+            <small>${"{{nonresponse.notes}}" - Reported <i>{{nonresponse.reported_on}}</i>}</small>
+          </p>
+        </div>
+
+      </td>
+      <td>
+
+        <button class = "btn btn-primary" data-toggle="tooltip" data-placement="top" title="Assign Case" ng-click = "openModal('assign_case', $index)">
+          <span class = "fa fa-tasks"></span>
+        </button>
+
+        <button class = "btn btn-success" data-toggle="tooltip" data-placement="top" title="Submit Out-of-Rotation" ng-click = "openModal('out_of_rotation', $index)">
+          <span class = "fa fa-sign-out"></span>
+        </button>
+
+        <button class = "btn btn-danger" data-toggle="tooltip" data-placement="top" title="Report Non-Response" ng-click = "openModal('non_response', $index)">
+          <span class = "fa fa-ban"></span>
+        </button>
+
+      </td>
+    </tr>
+
+  </table>
+  <div>
+    <button class = "btn btn-success" ng-click = "openModal('add_assignee')">
+      <span class = "fa fa-user-plus fa-2x"></span> <span>${Add Assignee}</span>
+    </button>
+  </div>
+</div>
+]]></template>
+    </sp_widget>
+</record_update>

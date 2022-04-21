@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sp_ng_template">
+    <sp_ng_template action="INSERT_OR_UPDATE">
+        <id>out_of_rotation</id>
+        <sp_widget display_value="Escalated Availability">957b82ac87cf01107501fc86dabb3568</sp_widget>
+        <sys_class_name>sp_ng_template</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2022-04-21 04:19:39</sys_created_on>
+        <sys_id>674e57e087c341107501fc86dabb354f</sys_id>
+        <sys_mod_count>15</sys_mod_count>
+        <sys_name>out_of_rotation</sys_name>
+        <sys_package display_value="Availability Dashboard" source="x_snc_avail_dash">6d7a3c98874301101321b918dabb35fb</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Availability Dashboard">6d7a3c98874301101321b918dabb35fb</sys_scope>
+        <sys_update_name>sp_ng_template_674e57e087c341107501fc86dabb354f</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2022-04-21 04:40:15</sys_updated_on>
+        <template><![CDATA[<div>
+  <div class="modal-header">
+    <h4 class="modal-title">
+      ${Submit Out-of-Rotation}
+    </h4>
+  </div>
+
+  <div class="modal-body">
+
+    <div class = "form-group">
+      <label class = "field-label" for = "start_time">Start Time</label>
+      <sp-date-picker id = "start_time" field="out_of_rotation_request.start_time" ng-model="out_of_rotation_request.start_time" sn-include-time="true"></sp-date-picker>
+    </div>
+
+    <div class = "form-group">
+      <label class = "field-label" for = "end_time">End Time</label>
+      <sp-date-picker id = "end_time" field="out_of_rotation_request.end_time" ng-model="out_of_rotation_request.end_time" sn-include-time="true"></sp-date-picker>
+    </div>
+
+    <div class = "form-group">
+      <label class = "field-label" for = "type">Type</label>
+      <select class = "form-control" id = "type" ng-model = "out_of_rotation_request.type">
+        <option value = ''>-- None --</option>
+        <option ng-repeat = "request_type in data.assignee_request_array" value = "{{request_type}}">{{request_type}}</option>
+      </select>
+    </div>
+
+    <div class = "form-group">
+      <label class = "field-label" for = "notes">Notes</label>
+      <textarea class = "form-control" id = "notes" ng-model = "out_of_rotation_request.notes">
+      </textarea>
+    </div>
+  </div>
+
+  <div class = "modal-footer">
+    <button class = "btn btn-primary" ng-click = "submitRequest(out_of_rotation_request)" ng-disabled = "!out_of_rotation_request.type || !out_of_rotation_request.start_time || !out_of_rotation_request.end_time || !out_of_rotation_request.notes">
+      ${Submit}
+    </button>
+  </div>
+</div>]]></template>
+    </sp_ng_template>
+</record_update>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_security_acl">
+    <sys_security_acl action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <admin_overrides>true</admin_overrides>
+        <advanced>false</advanced>
+        <condition/>
+        <description>Default access control on x_snc_avail_dash_assignee</description>
+        <name>x_snc_avail_dash_assignee</name>
+        <operation display_value="read">read</operation>
+        <script/>
+        <sys_class_name>sys_security_acl</sys_class_name>
+        <sys_created_by>edward.sun@snc</sys_created_by>
+        <sys_created_on>2022-04-20 20:33:51</sys_created_on>
+        <sys_id>90b33dec878f01107501fc86dabb35fd</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>x_snc_avail_dash_assignee</sys_name>
+        <sys_package display_value="Availability Dashboard" source="x_snc_avail_dash">6d7a3c98874301101321b918dabb35fb</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Availability Dashboard">6d7a3c98874301101321b918dabb35fb</sys_scope>
+        <sys_update_name>sys_security_acl_90b33dec878f01107501fc86dabb35fd</sys_update_name>
+        <sys_updated_by>edward.sun@snc</sys_updated_by>
+        <sys_updated_on>2022-04-20 20:33:51</sys_updated_on>
+        <type display_value="record">record</type>
+    </sys_security_acl>
+</record_update>
