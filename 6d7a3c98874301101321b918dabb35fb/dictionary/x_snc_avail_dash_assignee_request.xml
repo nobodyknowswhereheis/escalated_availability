@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?><database>
+    <element label="Assignee Request" max_length="40" name="x_snc_avail_dash_assignee_request" sizeclass="381" type="collection">
+        <element label="Assignee" max_length="32" name="assignee" reference="x_snc_avail_dash_assignee" type="reference"/>
+        <element label="End Time" max_length="40" name="end_time" type="glide_date_time"/>
+        <element label="Notes" max_length="400" name="notes" type="string"/>
+        <element label="Start Time" max_length="40" name="start_time" type="glide_date_time"/>
+        <element choice="1" label="Type" max_length="40" name="type" type="choice">
+            <choice>
+                <element inactive_on_update="false" label="Backlog" value="Backlog"/>
+                <element inactive_on_update="false" label="Out of Office" value="Out of Office"/>
+                <element inactive_on_update="false" label="Training" value="Training"/>
+            </choice>
+        </element>
+        <index name="index">
+            <element name="assignee"/>
+        </index>
+    </element>
+</database>

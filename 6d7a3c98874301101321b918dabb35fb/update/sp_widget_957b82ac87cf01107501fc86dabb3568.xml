@@ -96,7 +96,7 @@
         <link><![CDATA[function link(scope, element, attrs, controller) {  }]]></link>
         <name>Escalated Availability</name>
         <option_schema>[{"name":"title","section":"other","default_value":"Escalated Availability Dashboard","label":"Title","type":"string"}]</option_schema>
-        <public>true</public>
+        <public>false</public>
         <roles/>
         <script><![CDATA[(function() {
 	/* populate the 'data' object */
@@ -273,14 +273,14 @@
         <sys_created_by>edward.sun@snc</sys_created_by>
         <sys_created_on>2022-04-20 22:17:41</sys_created_on>
         <sys_id>957b82ac87cf01107501fc86dabb3568</sys_id>
-        <sys_mod_count>157</sys_mod_count>
+        <sys_mod_count>163</sys_mod_count>
         <sys_name>Escalated Availability</sys_name>
         <sys_package display_value="Availability Dashboard" source="x_snc_avail_dash">6d7a3c98874301101321b918dabb35fb</sys_package>
         <sys_policy/>
         <sys_scope display_value="Availability Dashboard">6d7a3c98874301101321b918dabb35fb</sys_scope>
         <sys_update_name>sp_widget_957b82ac87cf01107501fc86dabb3568</sys_update_name>
-        <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2022-04-21 05:41:37</sys_updated_on>
+        <sys_updated_by>edward.sun@snc</sys_updated_by>
+        <sys_updated_on>2022-04-26 17:21:09</sys_updated_on>
         <template><![CDATA[<div class = "text-center">
   <h2 class = "text text-primary">
     {{data.title}}
@@ -300,12 +300,12 @@
   <table class="table table-striped">
     <thead>
       <tr>
-        <th>${Name}</th>
-        <th>${Last Asssigned}</th>
-        <th>${Skills}</th>
-        <th>${Status}</th>
-        <th>${Details}</th>
-        <th>${Actions}</th>
+        <th width = "15%">${Name}</th>
+        <th width = "15%">${Last Asssigned}</th>
+        <th width = "20%">${Skills}</th>
+        <th width = "15%">${Status}</th>
+        <th width = "20%">${Details}</th>
+        <th width = "15%">${Actions}</th>
       </tr>
     </thead>
 

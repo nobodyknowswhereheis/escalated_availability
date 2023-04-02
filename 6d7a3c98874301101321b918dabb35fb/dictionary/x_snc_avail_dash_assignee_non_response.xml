@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?><database>
+    <element label="Assignee Non Response" max_length="40" name="x_snc_avail_dash_assignee_non_response" sizeclass="7" type="collection">
+        <element label="Assignee" max_length="32" name="assignee" reference="x_snc_avail_dash_assignee" type="reference"/>
+        <element label="Notes" max_length="400" name="notes" type="string"/>
+        <element label="Reported On" max_length="40" name="reported_on" type="glide_date_time"/>
+        <index name="index">
+            <element name="assignee"/>
+        </index>
+    </element>
+</database>

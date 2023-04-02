@@ -7,7 +7,7 @@
         <id>availability_dashboard</id>
         <internal>false</internal>
         <omit_watcher>false</omit_watcher>
-        <public>true</public>
+        <public>false</public>
         <roles/>
         <seo_script/>
         <short_description/>
@@ -15,14 +15,14 @@
         <sys_created_by>admin</sys_created_by>
         <sys_created_on>2022-04-21 01:43:57</sys_created_on>
         <sys_id>6eaa36e8874341107501fc86dabb35a2</sys_id>
-        <sys_mod_count>1</sys_mod_count>
+        <sys_mod_count>2</sys_mod_count>
         <sys_name>availability_dashboard</sys_name>
         <sys_package display_value="Availability Dashboard" source="x_snc_avail_dash">6d7a3c98874301101321b918dabb35fb</sys_package>
         <sys_policy/>
         <sys_scope display_value="Availability Dashboard">6d7a3c98874301101321b918dabb35fb</sys_scope>
         <sys_update_name>sp_page_6eaa36e8874341107501fc86dabb35a2</sys_update_name>
-        <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2022-04-21 04:49:20</sys_updated_on>
+        <sys_updated_by>edward.sun@snc</sys_updated_by>
+        <sys_updated_on>2022-04-25 22:57:38</sys_updated_on>
         <title>Availability Dashboard</title>
         <use_seo_script>false</use_seo_script>
     </sp_page>

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?><database>
+    <element label="Assigned Case" max_length="40" name="x_snc_avail_dash_assigned_case" sizeclass="431" type="collection">
+        <element label="Assigned On" max_length="40" name="assigned_on" type="glide_date_time"/>
+        <element label="Assignee" max_length="32" name="assignee" reference="x_snc_avail_dash_assignee" type="reference"/>
+        <element display="true" label="Number" max_length="40" name="number" type="string"/>
+        <index name="index">
+            <element name="assignee"/>
+        </index>
+    </element>
+</database>
