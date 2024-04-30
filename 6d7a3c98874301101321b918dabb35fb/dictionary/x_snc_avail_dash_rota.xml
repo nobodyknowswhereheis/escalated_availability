@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?><database>
+    <element db_object_id="d56e278a1bf50a10717075de034bcbbe" label="Rota" max_length="40" name="x_snc_avail_dash_rota" type="collection">
+        <element label="Active" max_length="40" name="active" type="boolean"/>
+        <element display="true" label="Name" mandatory="true" max_length="40" name="name" type="string"/>
+    </element>
+</database>

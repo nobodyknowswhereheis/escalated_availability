@@ -12,7 +12,6 @@
 	$scope.region = $scope.data.region_pref;
 
 	$scope.$watch('region', function(){
-
 		$scope.data.region = $scope.region;
 		c.server.update();
 
@@ -108,13 +107,19 @@
 
 	data.user = gs.getUser();
 
-	var regions = new GlideRecord('sys_choice');
+	/*var regions = new GlideRecord('sys_choice');
 	regions.addEncodedQuery('name=x_snc_avail_dash_assignee^element=region');
 	regions.query();
-
+*/
+	var regions = new GlideRecord('x_snc_avail_dash_rota');
+	regions.addEncodedQuery('active=true');
+	regions.query();	
+	
 	while(regions.next()){
-
-		data.region_array.push(regions.label.getDisplayValue());
+		
+		data.region_array.push({
+			"name":regions.name.getDisplayValue(),
+			"sys_id":regions.getValue('sys_id')});
 
 	}
 
@@ -141,7 +146,9 @@
 			data.user.savePreference('availability_dashboard_region', input.region);
 
 			var regional_assignee = new GlideRecord('x_snc_avail_dash_assignee');
-			regional_assignee.addEncodedQuery('in_rotation=true^region=' + input.region);
+			//regional_assignee.addEncodedQuery('in_rotation=true^region=' + input.region);
+			regional_assignee.addQuery('in_rotation',true);
+			regional_assignee.addQuery('region',"CONTAINS",input.region);
 			regional_assignee.orderByDesc('last_assigned');
 			regional_assignee.query();
 
@@ -272,15 +279,17 @@
         <sys_class_name>sp_widget</sys_class_name>
         <sys_created_by>edward.sun@snc</sys_created_by>
         <sys_created_on>2022-04-20 22:17:41</sys_created_on>
+        <sys_customer_update>false</sys_customer_update>
         <sys_id>957b82ac87cf01107501fc86dabb3568</sys_id>
-        <sys_mod_count>163</sys_mod_count>
+        <sys_mod_count>171</sys_mod_count>
         <sys_name>Escalated Availability</sys_name>
         <sys_package display_value="Availability Dashboard" source="x_snc_avail_dash">6d7a3c98874301101321b918dabb35fb</sys_package>
         <sys_policy/>
+        <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
         <sys_scope display_value="Availability Dashboard">6d7a3c98874301101321b918dabb35fb</sys_scope>
         <sys_update_name>sp_widget_957b82ac87cf01107501fc86dabb3568</sys_update_name>
-        <sys_updated_by>edward.sun@snc</sys_updated_by>
-        <sys_updated_on>2022-04-26 17:21:09</sys_updated_on>
+        <sys_updated_by>jesse.adams</sys_updated_by>
+        <sys_updated_on>2024-04-28 03:31:06</sys_updated_on>
         <template><![CDATA[<div class = "text-center">
   <h2 class = "text text-primary">
     {{data.title}}
@@ -290,7 +299,7 @@
 <div>
   <select class = "form-control" ng-model = "region">
     <option value = ''>-- None --</option>
-    <option ng-repeat = "region in data.region_array" value = "{{region}}">{{region}}</option>
+    <option ng-repeat = "region in data.region_array" value = "{{region.sys_id}}">{{region.name}}</option>
   </select>
 </div>
 

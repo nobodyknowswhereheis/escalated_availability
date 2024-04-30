@@ -1,19 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?><database>
-    <element label="Assignee" max_length="40" name="x_snc_avail_dash_assignee" sizeclass="42" type="collection">
+    <element db_object_id="246535421b710a10717075de034bcb5c" label="Assignee" max_length="40" name="x_snc_avail_dash_assignee" type="collection">
         <element label="Email" max_length="80" name="email" type="string"/>
         <element default="true" label="In Rotation" max_length="40" name="in_rotation" type="boolean"/>
         <element label="Last Assigned" max_length="40" name="last_assigned" type="glide_date_time"/>
         <element label="Last Non-Response" max_length="40" name="last_non_response" type="glide_date_time"/>
         <element display="true" label="Name" max_length="80" name="name" type="string"/>
         <element label="Phone" max_length="80" name="phone" type="string"/>
-        <element choice="1" label="Region" max_length="40" name="region" type="choice">
-            <choice>
-                <element inactive_on_update="false" label="APJ" value="APJ"/>
-                <element inactive_on_update="false" label="EMEA/HYD 2" value="EMEA/HYD 2"/>
-                <element inactive_on_update="false" label="HYD 1" value="HYD 1"/>
-                <element inactive_on_update="false" label="US East" value="US East"/>
-                <element inactive_on_update="false" label="US West" value="US West"/>
-            </choice>
+        <element choice="1" label="Rota" mandatory="true" max_length="40" name="region" reference="x_snc_avail_dash_rota" reference_qual="active=true^EQ" reference_qual_condition="active=true^EQ" type="glide_list">
+            <choice/>
         </element>
         <element label="Skills" max_length="400" name="skills" type="string"/>
     </element>
