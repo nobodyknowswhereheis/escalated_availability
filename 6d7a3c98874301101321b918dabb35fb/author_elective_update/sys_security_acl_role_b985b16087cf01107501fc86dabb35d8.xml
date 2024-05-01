@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_security_acl_role">
+    <sys_security_acl_role action="DELETE">
+        <sys_class_name>sys_security_acl_role</sys_class_name>
+        <sys_created_by>edward.sun@snc</sys_created_by>
+        <sys_created_on>2022-04-20 20:41:52</sys_created_on>
+        <sys_id>b985b16087cf01107501fc86dabb35d8</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>x_snc_avail_dash_assigned_case.x_snc_avail_dash.assignee_user</sys_name>
+        <sys_package display_value="Availability Dashboard" source="x_snc_avail_dash">6d7a3c98874301101321b918dabb35fb</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Availability Dashboard">6d7a3c98874301101321b918dabb35fb</sys_scope>
+        <sys_security_acl display_value="x_snc_avail_dash_assigned_case">f985b16087cf01107501fc86dabb35d5</sys_security_acl>
+        <sys_update_name>sys_security_acl_role_b985b16087cf01107501fc86dabb35d8</sys_update_name>
+        <sys_updated_by>edward.sun@snc</sys_updated_by>
+        <sys_updated_on>2022-04-20 20:41:52</sys_updated_on>
+        <sys_user_role display_value="x_snc_avail_dash.assignee_user" name="x_snc_avail_dash.assignee_user">b3a3f5ec878f01107501fc86dabb3540</sys_user_role>
+        <transaction_id/>
+    </sys_security_acl_role>
+<sys_update_version action="INSERT_OR_UPDATE">
+        <action>DELETE</action>
+        <application display_value="Availability Dashboard">6d7a3c98874301101321b918dabb35fb</application>
+        <file_path/>
+        <instance_id>6a264c7f6fa37900f51e7b2f5d3ee40b</instance_id>
+        <instance_name>empjadams2</instance_name>
+        <name>sys_security_acl_role_b985b16087cf01107501fc86dabb35d8</name>
+        <payload><![CDATA[<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_security_acl_role">
+    <sys_security_acl_role action="INSERT_OR_UPDATE">
+        <sys_class_name>sys_security_acl_role</sys_class_name>
+        <sys_created_by>edward.sun@snc</sys_created_by>
+        <sys_created_on>2022-04-20 20:41:52</sys_created_on>
+        <sys_id>b985b16087cf01107501fc86dabb35d8</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>x_snc_avail_dash_assigned_case.x_snc_avail_dash.assignee_user</sys_name>
+        <sys_package display_value="Availability Dashboard" source="x_snc_avail_dash">6d7a3c98874301101321b918dabb35fb</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Availability Dashboard">6d7a3c98874301101321b918dabb35fb</sys_scope>
+        <sys_security_acl display_value="x_snc_avail_dash_assigned_case">f985b16087cf01107501fc86dabb35d5</sys_security_acl>
+        <sys_update_name>sys_security_acl_role_b985b16087cf01107501fc86dabb35d8</sys_update_name>
+        <sys_updated_by>edward.sun@snc</sys_updated_by>
+        <sys_updated_on>2022-04-20 20:41:52</sys_updated_on>
+        <sys_user_role display_value="x_snc_avail_dash.assignee_user" name="x_snc_avail_dash.assignee_user">b3a3f5ec878f01107501fc86dabb3540</sys_user_role>
+        <transaction_id/>
+    </sys_security_acl_role>
+</record_update>]]></payload>
+        <payload_hash>-725998378</payload_hash>
+        <record_name>x_snc_avail_dash_assigned_case.x_snc_avail_dash.assignee_user</record_name>
+        <reverted_from/>
+        <source>ec52f14b87b14210d4f2b88c8bbb3577</source>
+        <source_table>sys_upgrade_history</source_table>
+        <state>previous</state>
+        <sys_created_by>jesse.adams@snc</sys_created_by>
+        <sys_created_on>2024-04-30 20:19:14</sys_created_on>
+        <sys_id>3262b94b87b14210d4f2b88c8bbb350e</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_recorded_at>18f30a954350000001</sys_recorded_at>
+        <sys_updated_by>jesse.adams@snc</sys_updated_by>
+        <sys_updated_on>2024-04-30 20:19:14</sys_updated_on>
+        <type>Access Roles</type>
+        <update_guid>fe62b94bd5b14210695f3ea7803b8f0d</update_guid>
+        <update_guid_history>fe62b94bd5b14210695f3ea7803b8f0d:-725998378</update_guid_history>
+    </sys_update_version>
+    <sys_metadata_delete action="INSERT_OR_UPDATE">
+        <sys_audit_delete display_value="x_snc_avail_dash_assigned_case.x_snc_avail_dash.assignee_user">129b3dc387f14210d4f2b88c8bbb354d</sys_audit_delete>
+        <sys_class_name>sys_metadata_delete</sys_class_name>
+        <sys_created_by>jesse.adams</sys_created_by>
+        <sys_created_on>2024-04-30 20:59:20</sys_created_on>
+        <sys_db_object display_value="" name="sys_security_acl_role">sys_security_acl_role</sys_db_object>
+        <sys_id>3929b0f0d3a841c88d25a489f7cd4031</sys_id>
+        <sys_metadata>b985b16087cf01107501fc86dabb35d8</sys_metadata>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>x_snc_avail_dash_assigned_case.x_snc_avail_dash.assignee_user</sys_name>
+        <sys_package display_value="Availability Dashboard" source="x_snc_avail_dash">6d7a3c98874301101321b918dabb35fb</sys_package>
+        <sys_parent display_value="x_snc_avail_dash_assigned_case">f985b16087cf01107501fc86dabb35d5</sys_parent>
+        <sys_policy/>
+        <sys_scope display_value="Availability Dashboard">6d7a3c98874301101321b918dabb35fb</sys_scope>
+        <sys_scope_delete display_value="">04dd86b16ca44f9a83395a44e8f65d19</sys_scope_delete>
+        <sys_update_name>sys_security_acl_role_b985b16087cf01107501fc86dabb35d8</sys_update_name>
+        <sys_update_version display_value="sys_security_acl_role_b985b16087cf01107501fc86dabb35d8">3262b94b87b14210d4f2b88c8bbb350e</sys_update_version>
+        <sys_updated_by>jesse.adams</sys_updated_by>
+        <sys_updated_on>2024-04-30 20:59:20</sys_updated_on>
+    </sys_metadata_delete>
+</record_update>
